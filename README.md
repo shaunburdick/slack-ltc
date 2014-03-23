@@ -40,9 +40,13 @@ Finalizing Plans
 Once the LTC has enough information it will attempt to create a lunch plan.  Once a lunch plan is created, it will announce the plan 30 minutes before departure along with a last call message:
 
 > @LTC: Behold the following lunch plans:
+
 > @LTC: @shaun will be leaving for Chipotle's after 11:45am with @trevor, @drew, and @ray returning before 1:00pm
+
 > @LTC: @ben will be leaving for Chipotle's after 11:45am with @brian and room for 1 more returning before 1:00pm
+
 > @LTC: @chuck will be leaving for Spera's after 12:00pm with @dean and room for 2 more with no definite return time
+
 > @LTC: Last Call! Please update your meal plans before departure!
 
 Users can change their plans at any time and the LTC will recaluclate and announce any changes
