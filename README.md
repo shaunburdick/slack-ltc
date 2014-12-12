@@ -8,10 +8,11 @@ A [Slack](https://slack.com) integration that provides meal coordination functio
 Installation
 ============
 
-1. Install [Hammock](https://github.com/tinyspeck/hammock)
-2. Clone slack-ltc into the **/plugins** folder
-3. ????
-4. Profit
+0. Install [Node](https://nodejs.org)
+1. Clone slack-ltc
+2. `npm install`
+3. Copy `config.js-example` to `config.js` and fill it out
+4. `node .` or `node app.js`
 
 Usage
 =====
@@ -59,3 +60,9 @@ If there is no clear decision, tie breakers are handled in the following fashion
 * In the event of a tie for location, preference will be given to the person providing transportation
 * In the event no one specifies a location, the LTC will look in that rooms history and choose a frequently suggested location
 * In the event that everyone specifies *no ride*, the LTC will suggest a good local therapist
+
+
+Testing
+=======
+
+Run tests using npm: `npm run test`
