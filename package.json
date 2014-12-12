@@ -21,12 +21,13 @@
     "body-parser": "^1.10.0",
     "express": "^4.10.5",
     "node-slack": "0.0.5",
+    "ptdb": "^1.1.0",
     "verror": "^1.6.0"
   },
   "devDependencies": {
     "jasmine-node": "^1.14.5"
   },
   "scripts": {
-    "test": "node_modules/jasmine-node/bin/jasmine-node spec --verbose"
+    "test": "node_modules/jasmine-node/bin/jasmine-node spec --verbose --captureExceptions"
   }
 }
