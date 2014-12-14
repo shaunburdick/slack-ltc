@@ -1,10 +1,29 @@
 module.exports = {
   slack: {
-    domain: 'example', // the first part of your url [example].slack.com
-    token: 'adslkjsdlakjsfa', // token you get for integration
-    bot: {
-      name: 'ltc', // name of your bot
-      icon: 'taco' // icon for your bot
+    'example': { // the first part of your url
+      domain: 'example', // the first part of your url [example].slack.com
+      token: 'adslkjsdlakjsfa', // token you get for integration
+      bot: {
+        name: 'ltc', // name of your bot
+        icon: 'taco' // icon for your bot
+      }
+    } // You can add more than one domain here
+  },
+  db: {
+    name: 'slack-db', // The name/path of your ptdb
+    settings: {} // Any setting to pass to ptdb
+  },
+  server: {
+    path: '/slack-ltc',
+    port: 8181
+  },
+  logging: {
+    file: {
+      filename: 'slack-ltc.log',
+      level: 'info'
+    },
+    console: {
+      level: 'info'
     }
   }
 }

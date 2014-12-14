@@ -84,4 +84,31 @@ describe ('Command Parser', function() {
 
     expect(res.reset()).toEqual({ cmd: 'IN', args: [] });
   });
+
+  describe('Formatting', function() {
+    it ('should format TO commands', function() {
+      var cmd = new Command('in to foo, bar');
+      expect(cmd.formatAccouncement('user')).toEqual('@user is in for foo, bar.');
+    });
+
+    it ('should format AT commands', function() {
+      var cmd = new Command('in at >11:30pm <1:00pm');
+      expect(cmd.formatAccouncement('user')).toEqual('@user is in for food leaving after 11:30pm and returning before 1:00pm.');
+    });
+
+    it ('should format TAKING commands', function() {
+      var cmd = new Command('in taking 3');
+      expect(cmd.formatAccouncement('user')).toEqual('@user is in for food. They can take 3.');
+    });
+
+    it ('should format NO commands', function() {
+      var cmd = new Command('in no hippies');
+      expect(cmd.formatAccouncement('user')).toEqual('@user is in for food. No hippies.');
+    });
+
+    it ('should format multiple commands', function() {
+      var cmd = new Command('in to Taco Bell at >11:45am <1:00pm taking 1 no freeloaders');
+      expect(cmd.formatAccouncement('user')).toEqual('@user is in for Taco, Bell leaving after 11:45am and returning before 1:00pm. They can take 1. No freeloaders.');
+    });
+  });
 });
