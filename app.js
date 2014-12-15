@@ -2,10 +2,10 @@ var config = require('./config'),
   winston = require('winston'),
   VError = require('verror'),
   Command = require('./lib/command'),
-  Slack = require('node-slack')
+  Slack = require('node-slack'),
+  slackers = {},
   PTDB = require('ptdb'),
-  app = require('express')(),
-  app.use(require('body-parser').json());
+  app = require('express')();
 
 var logger = new (winston.Logger)({
   transports: [
@@ -16,11 +16,20 @@ var logger = new (winston.Logger)({
 
 logger.info('Starting...');
 
+logger.info('Setting up slackers...');
+for (var slacker in config.slack) {
+  slackers[slacker] = new Slack(config.slack[slacker].domain, config.slack[slacker].token);
+}
+
 var db = new PTDB('db/' + config.name, config.settings);
 
+app.use(require('body-parser').urlencoded({
+  extended: true
+}));
+
 app.post(config.server.path, function(req, res) {
-  logger.info('Received request: %j', req);
-  res.code(200);
+  logger.info('Received request:', req.body);
+  res.status(200).end();
 });
 
 var server = app.listen(config.server.port, function() {
