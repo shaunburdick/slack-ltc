@@ -29,7 +29,24 @@ app.use(require('body-parser').urlencoded({
 
 app.post(config.server.path, function(req, res) {
   logger.info('Received request:', req.body);
-  res.status(200).end();
+  if (slackers.hasOwnProperty(req.body.team_domain)) {
+    var slacker = slackers[req.body.team_domain];
+    try {
+      var cmd = new Command(req.body.text);
+      var announce = cmd.formatAnnouncement(req.body.user_name);
+      slacker.send({
+        text: announce,
+        channel: req.body.channel_name,
+        link_names: 1
+      });
+      res.status(200).send('Updating status to: ' + announce);
+    } catch (e) {
+      logger.error(e.message);
+      res.status(200).send(e.message);
+    }
+  } else {
+    res.status(403).send("Your slack instance is not configured!");
+  }
 });
 
 var server = app.listen(config.server.port, function() {

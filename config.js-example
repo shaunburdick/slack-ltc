@@ -3,6 +3,7 @@ module.exports = {
     'example': { // the first part of your url
       domain: 'example', // the first part of your url [example].slack.com
       token: 'adslkjsdlakjsfa', // token you get for integration
+      incoming: 'https://hooks.slack.com/services/some/unique/url' // incoming webhook url
       bot: {
         name: 'ltc', // name of your bot
         icon: 'taco' // icon for your bot
